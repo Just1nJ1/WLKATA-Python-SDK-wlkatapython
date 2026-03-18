@@ -95,7 +95,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: 23
 
     - name: Download standalone Python
       working-directory: blockly
@@ -113,6 +113,12 @@ jobs:
       shell: bash
       run: |
         ${{ matrix.pip }} install ..
+
+    - name: Install flask into embedded Python
+      working-directory: blockly
+      shell: bash
+      run: |
+        ${{ matrix.pip }} install flask flask-cors
 
     - name: Install Node.js dependencies
       working-directory: blockly
